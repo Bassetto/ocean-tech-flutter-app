@@ -1,4 +1,4 @@
-# Infinitum APP
+# Ocean Tech
 
 Projeto de consulta da condição das praias brasileiras.
 

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ocean_tech/app/core/core.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+  AppBarWidget({Key? key, required this.scaffoldKey}) : super(key: key);
+
+  final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
   Size get preferredSize => Size.fromHeight(130);
@@ -19,6 +22,18 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+            OutlinedButton(
+              style: ButtonStyle(
+                backgroundColor:
+                MaterialStateProperty.all<Color>(Colors.transparent),
+                side: MaterialStateProperty.all<BorderSide>(BorderSide.none),
+              ),
+              child: Icon(
+                Icons.menu,
+                color: Colors.white,
+              ),
+              onPressed: () => scaffoldKey.currentState!.openDrawer(),
+            ),
             Text(
               "Ocean Tech\nVida na Água",
               style: AppTextStyles.appBar,

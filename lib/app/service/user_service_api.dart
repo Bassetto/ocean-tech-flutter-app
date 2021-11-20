@@ -13,7 +13,7 @@ class UserServiceApi extends UserService {
   @override
   Future<User> login(String username, String password) async {
     try {
-      var response = await _dio.post('/login', data: {username, password});
+      var response = await _dio.post('/login', data: {'username': username, 'password': password});
       if (response.statusCode == 200) {
         return Future.value(User(response.data["_id"], response.data["name"], response.data["username"]));
       }
@@ -27,8 +27,9 @@ class UserServiceApi extends UserService {
   @override
   Future<User> register(String name, String username, String password) async {
     try {
-      var response = await _dio.post('/register', data: {name, username, password});
-      if (response.statusCode == 200) {
+      var response = await _dio.post('/register', data: {'name': name, 'username': username, 'password': password});
+      if (response.statusCode == 201) {
+        print(response.data);
         return Future.value(User(response.data["_id"], response.data["name"], response.data["username"]));
       }
       return Future.value(null);

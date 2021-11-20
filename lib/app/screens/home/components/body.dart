@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ocean_tech/app/components/loading_widget.dart';
 import 'package:ocean_tech/app/model/mapping.dart';
 import 'package:ocean_tech/app/screens/reports_list_name/reports_list_name_screen.dart';
 import 'package:ocean_tech/app/screens/reports_state_year/reports_state_year_screen.dart';
@@ -188,59 +187,5 @@ class _BodyState extends State<Body> {
         ],
       ),
     );
-
-    // return FutureBuilder<List<Mapping>>(
-    //     future: _listaPraias,
-    //     builder: (context, snapshot) {
-    //       if (snapshot.connectionState == ConnectionState.done) {
-    //         return Padding(
-    //           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-    //           child: Column(
-    //             mainAxisAlignment: MainAxisAlignment.center,
-    //             children: [
-    //             Text(
-    //             "Pesquisa da situação das praias brasileiras",
-    //             style: AppTextStyles.title,
-    //           ),
-    //           SizedBox(height: 20),
-    //           Autocomplete<Mapping>(
-    //             displayStringForOption: (Mapping mapping) =>
-    //             mapping.name,
-    //             optionsBuilder: (TextEditingValue textEditingValue) {
-    //               if (textEditingValue.text == '') {
-    //                 return const Iterable<Mapping>.empty();
-    //               }
-    //               return snapshot.data!.where((Mapping option) {
-    //                 return option.name
-    //                     .toLowerCase()
-    //                     .contains(_removerAcentos(
-    //                     textEditingValue.text.toLowerCase()));
-    //               });
-    //             },
-    //             onSelected: (Mapping mapping) {
-    //               Navigator.push(context, MaterialPageRoute(builder: (context) {
-    //                 return ReportsListNameScreen(mapping: mapping);
-    //               }));
-    //             },
-    //           ),
-    //           SizedBox(height: DefaultValues.padding / 2),
-    //           DropdownButton(
-    //               value: _dropdownValue,
-    //               items: _options.map((String state) {
-    //                 return new DropdownMenuItem<String>(value: state, child: Text(state.replaceAll("-", " ")));
-    //               }).toList(),
-    //             onChanged: (String? state) {
-    //                 setState(() {
-    //                   _dropdownValue = state!;
-    //                 });
-    //             },
-    //           ),
-    //       ],
-    //       ),
-    //       );
-    //       } else {
-    //       return LoadingWidget();
-    //       }
-    //     });
   }
 }
